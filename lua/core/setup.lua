@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 local default_options = {
   relativenumber = true,
   autoindent = true,
