@@ -75,6 +75,49 @@ require("lazy").setup({
     dependencies = { 
       "nvim-lua/plenary.nvim",
     },
+    lazy = true,
+    event = "VeryLazy",
     config = require("plugins.telescope").config,
   },
+  {
+    "neovim/nvim-lspconfig",
+    lazy = true,
+    event = "VeryLazy",
+    config = require("plugins.lspconfig").config,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    config = require("plugins.mason_lspconfig").config,
+  },
+  {
+    "williamboman/mason.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    config = require("plugins.mason").config,
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    config = require("plugins.null_ls").config,
+  },
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+  "hrsh7th/nvim-cmp",
+
+  "hrsh7th/cmp-vsnip",
+  "hrsh7th/vim-vsnip",
+
+  "L3MON4D3/LuaSnip",
+  "saadparwaiz1/cmp_luasnip",
+
+  "SirVer/ultisnips",
+  "quangnguyen30192/cmp-nvim-ultisnips",
+
+  "dcampos/nvim-snippy",
+  "dcampos/cmp-snippy",
 })
