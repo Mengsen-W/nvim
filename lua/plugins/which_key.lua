@@ -20,6 +20,7 @@ local visual_opts = {
 
 local normal_mappings = {
   e = {"<cmd>NeoTreeFloatToggle<cr>", "Explore"},
+  p = {"<cmd>Telescope projects<cr>", "Projects"},
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -39,6 +40,22 @@ local normal_mappings = {
       "Colorscheme with Preview",
     },
   },
+  b = {
+    name = "Buffers",
+    j = { "<cmd>BufferLinePick<cr>", "Jump" },
+    f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+    b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+    n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
+    W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
+    c = { "<cmd>BufferLinePickClose<cr>", "Pick which buffer to close", },
+    x = { "<cmd>BufferKill<CR>", "Close Buffer" },
+    h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+    l = { "<cmd>BufferLineCloseRight<cr>", "Close all to the right" },
+    D = { "<cmd>BufferLineSortByDirectory<cr>", "Sort by directory" },
+    L = { "<cmd>BufferLineSortByExtension<cr>", "Sort by language" },
+    -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
+  },
+
 }
 
 M.config = function()

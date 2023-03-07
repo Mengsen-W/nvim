@@ -13,8 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   -- the colorscheme should be available when starting Neovim
-  {
-    "folke/tokyonight.nvim",
+  { "folke/tokyonight.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = require("plugins.tokyonight").config,
@@ -26,7 +25,7 @@ require("lazy").setup({
     "folke/which-key.nvim",
     lazy = true,
     event = "VeryLazy",
-    config = require("plugins.whick_key").config,
+    config = require("plugins.which_key").config,
   },
 
   {
@@ -59,6 +58,10 @@ require("lazy").setup({
     },
     config = require("plugins.lualine").config,
   },
+  {
+    'akinsho/bufferline.nvim',
+    config = require("plugins.bufferline").config,
+  },
 
   {
     "nvim-treesitter/nvim-treesitter",
@@ -72,7 +75,7 @@ require("lazy").setup({
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.1",
-    dependencies = { 
+    dependencies = {
       "nvim-lua/plenary.nvim",
     },
     lazy = true,
@@ -103,21 +106,34 @@ require("lazy").setup({
     event = "VeryLazy",
     config = require("plugins.null_ls").config,
   },
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-cmdline",
-  "hrsh7th/nvim-cmp",
+  {
+    "ahmedkhalf/project.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    config = require("plugins.project").config,
+  },
+  {
+    "hrsh7th/cmp-nvim-lsp",
+    lazy = true,
+    event = "VeryLazy",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/nvim-cmp",
 
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/vim-vsnip",
 
-  "L3MON4D3/LuaSnip",
-  "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
 
-  "SirVer/ultisnips",
-  "quangnguyen30192/cmp-nvim-ultisnips",
+      "SirVer/ultisnips",
+      "quangnguyen30192/cmp-nvim-ultisnips",
 
-  "dcampos/nvim-snippy",
-  "dcampos/cmp-snippy",
+      "dcampos/nvim-snippy",
+      "dcampos/cmp-snippy",
+    },
+    config = require("plugins.cmp_lsp").config,
+  },
 })
