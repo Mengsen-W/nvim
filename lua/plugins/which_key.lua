@@ -21,6 +21,7 @@ local visual_opts = {
 local normal_mappings = {
   e = {"<cmd>NeoTreeFloatToggle<cr>", "Explore"},
   p = {"<cmd>Telescope projects<cr>", "Projects"},
+  t = {"<cmd>ToggleTerm<cr>", "terminal"},
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -48,20 +49,35 @@ local normal_mappings = {
     n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
     W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
     c = { "<cmd>BufferLinePickClose<cr>", "Pick which buffer to close", },
-    x = { "<cmd>BufferKill<CR>", "Close Buffer" },
+    x = { "<cmd>bd<CR>", "Close Buffer" },
     h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
     l = { "<cmd>BufferLineCloseRight<cr>", "Close all to the right" },
     D = { "<cmd>BufferLineSortByDirectory<cr>", "Sort by directory" },
     L = { "<cmd>BufferLineSortByExtension<cr>", "Sort by language" },
     -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
   },
+  l = {
+    name = "Lsp",
+    d = {
+      name = "diagnostic",
+      e = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open Diagnostic" },
+      p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Preview Diagnostic" },
+      n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
+      l = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Local Diagnostic" },
+    },
+  },
+  ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
+}
 
+local visual_mappings = {
+  ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" },
 }
 
 M.config = function()
   local wk = require("which-key")
   wk.setup({})
   wk.register(normal_mappings, normal_opts)
+  wk.register(visual_mappings, visual_opts)
 end
 
 return M

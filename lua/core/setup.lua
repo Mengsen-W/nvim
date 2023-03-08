@@ -43,8 +43,13 @@ local default_options = {
   showcmd = false,
   ruler = false,
   laststatus = 3,
+  list = true,
 }
 
 for k, v in pairs(default_options) do
   vim.opt[k] = v
 end
+
+vim.opt.listchars:append "space:⋅"
+-- vim.opt.listchars:append "eol:↴"
+

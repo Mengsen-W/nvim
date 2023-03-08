@@ -12,16 +12,28 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  {
+    "dstein64/vim-startuptime",
+    -- lazy-load on a command
+    cmd = "StartupTime",
+  },
   -- the colorscheme should be available when starting Neovim
-  { "folke/tokyonight.nvim",
+  { 
+    "folke/tokyonight.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = require("plugins.tokyonight").config,
   },
+  {
+    "goolord/alpha-nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1001, -- make sure to load this before all the other start plugins
+    config = require("plugins.alpha").config,
+  },
 
   -- I have a separate config.mappings file where I require which-key.
   -- With lazy the plugin will be automatically loaded when it is required somewhere
-  { 
+  {
     "folke/which-key.nvim",
     lazy = true,
     event = "VeryLazy",
@@ -36,8 +48,25 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
     },
     lazy = true,
-    event = "VeryLazy",
+    cmd = { "NeoTreeFloatToggle"},
+    event = "User DirOpened",
     config = require("plugins.neo_tree").config,
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    cmd = {
+      "ToggleTerm",
+      "TermExec",
+      "ToggleTermToggleAll",
+      "ToggleTermSendCurrentLine",
+      "ToggleTermSendVisualLines",
+      "ToggleTermSendVisualSelection",
+    },
+    version = "*",
+    config = require("plugins.toggleterm").config,
   },
 
   {
@@ -45,6 +74,7 @@ require("lazy").setup({
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
+      "nvim-lua/popup.nvim",
     },
     lazy = true,
     event = "VeryLazy",
@@ -56,10 +86,15 @@ require("lazy").setup({
     dependencies = {
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     },
+    lazy = true,
+    event = "VimEnter",
     config = require("plugins.lualine").config,
   },
   {
     'akinsho/bufferline.nvim',
+    branch = "main",
+    lazy = true,
+    event = "VeryLazy",
     config = require("plugins.bufferline").config,
   },
 
@@ -69,8 +104,28 @@ require("lazy").setup({
       "p00f/nvim-ts-rainbow",
     },
     lazy = true,
-    event = "VeryLazy",
+    cmd = {
+      "TSInstall",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSInstallFromGrammar",
+    },
+    event = "User FileOpened",
     config = require("plugins.treesitter").config,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
+    config = require("plugins.indent_blankline").config,
+  },
+  {
+    "windwp/nvim-autopairs",
+    lazy = true;
+    event = "VeryLazy",
+    config = require("plugins.autopairs").config,
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -79,6 +134,7 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
     },
     lazy = true,
+    cmd = "Telescope",
     event = "VeryLazy",
     config = require("plugins.telescope").config,
   },
@@ -86,18 +142,22 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     lazy = true,
     event = "VeryLazy",
+    dependencies = { "mason-lspconfig.nvim"},
     config = require("plugins.lspconfig").config,
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    dependencies = "mason.nvim",
     lazy = true,
     event = "VeryLazy",
+    cmd = { "LspInstall", "LspUninstall" },
     config = require("plugins.mason_lspconfig").config,
   },
   {
     "williamboman/mason.nvim",
     lazy = true,
     event = "VeryLazy",
+    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     config = require("plugins.mason").config,
   },
   {
@@ -109,13 +169,12 @@ require("lazy").setup({
   {
     "ahmedkhalf/project.nvim",
     lazy = true,
-    event = "VeryLazy",
+    event = "VimEnter",
+    cmd = "Telescope projects",
     config = require("plugins.project").config,
   },
   {
     "hrsh7th/cmp-nvim-lsp",
-    lazy = true,
-    event = "VeryLazy",
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -134,6 +193,28 @@ require("lazy").setup({
       "dcampos/nvim-snippy",
       "dcampos/cmp-snippy",
     },
-    config = require("plugins.cmp_lsp").config,
+    lazy = true,
+    event = { "InsertEnter", "CmdlineEnter" },
+    config = require("plugins.cmp").config,
+  },
+  
+  {
+    "lewis6991/gitsigns.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    config = require("plugins.gitsigns").config,
+  },
+  {
+    "numToStr/Comment.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    config = require("plugins.comment").config,
+  },
+  {
+    "SmiteshP/nvim-navic",
+    lazy = true,
+    event = "VeryLazy",
+    dependencies = { "neovim/nvim-lspconfig" },
+    config = require("plugins.navic")
   },
 })
