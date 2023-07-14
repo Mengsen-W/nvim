@@ -8,3 +8,7 @@ comment.setup({
 		extra = false,
 	},
 })
+
+local surround = require("nvim-surround")
+
+surround.setup({})

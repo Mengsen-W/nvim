@@ -88,3 +88,4 @@ tnoremap <C-O> <C-\><C-N><C-O>
 ]])
 
 vim.cmd([[hi NonText ctermfg=gray guifg=grey10]])
+vim.cmd([[colorscheme torte]])
