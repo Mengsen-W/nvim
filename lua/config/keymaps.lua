@@ -27,6 +27,7 @@ local visual_opts = {
 
 local normal_mapping = {
 	["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
+	h = { "<cmd>noh<cr>", "no highlight" },
 	l = {
 		name = "lsp",
 		d = {
@@ -36,13 +37,13 @@ local normal_mapping = {
 			s = { vim.diagnostic.setloclist, "local list" },
 			e = { vim.diagnostic.open_float, "open float" },
 		},
-		b = {
+		a = {
 			name = "action",
-			d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Goto definition" },
-			D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto Declaration" },
-			k = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" },
-			i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Goto Implementation" },
-			h = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "show signature help" },
+			d = { vim.lsp.buf.definition, "definition" },
+			D = { vim.lsp.buf.declaration, "declaration" },
+			h = { vim.lsp.buf.hover, "hover" },
+			i = { vim.lsp.buf.implementation, "implemention" },
+			s = { vim.lsp.buf.signature_help, "show signature help" },
 			t = { vim.lsp.buf.type_definition, "type definition" },
 			R = { vim.lsp.buf.rename, "rename" },
 			c = { vim.lsp.buf.code_action, "code action" },
@@ -56,6 +57,34 @@ local normal_mapping = {
 			l = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))", "list workspace" },
 		},
 	},
+
+	s = {
+		name = "search",
+		f = { "<cmd>Telescope find_files<cr>", "find files" },
+		g = { "<cmd>Telescope live_grep<cr>", "live grep" },
+		b = { "<cmd>Telescope buffers<cr>", "buffers" },
+		h = { "<cmd>Telescope help_tags<cr>", "help tags" },
+	},
+
+	g = {
+		name = "git",
+		l = { "<cmd>LazyGit<cr>", "lazy git" },
+		n = { "<cmd>Gitsigns next_hunk<cr>", "next hunk" },
+		p = { "<cmd>Gitsigns prev_hunk<cr>", "prev hunk" },
+		b = { "<cmd>Gitsigns blame_line<cr>", "blame line" },
+		r = { "<cmd>Gitsigns reset_hunk<cr>", "reset_hunk" },
+		h = { "<cmd>Gitsigns preview_hunk_inline<cr>", "preview hunk inline" },
+	},
+	F = {
+		name = "fun",
+		r = { "<cmd>CellularAutomaton make_it_rain<CR>", "make it rain" },
+	},
+	P = {
+		name = "Package Manager",
+		l = { "<cmd>Lazy<cr>", "lazy nvim" },
+		m = { "<cmd>Mason<cr>", "Mason" },
+		n = { "<cmd>NullLsInfo<cr>", "Null Ls Info" },
+	}
 }
 
 local visual_mapping = {
