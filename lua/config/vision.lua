@@ -41,27 +41,29 @@ lualine.setup({
 })
 
 local bufferline = require("bufferline")
-bufferline.setup({
-	-- options = {
-	-- 	mode = "tabs",
-	-- 	diagnostics = "nvim_lsp",
-	-- 	diagnostics_indicator = function(count, level, diagnostics_dict, context)
-	-- 		local icon = level:match("error") and "E" or "W"
-	-- 		return " " .. icon .. count
-	-- 	end,
-	-- 	indicator = {
-	-- 		icon = "|", -- this should be omitted if indicator style is not 'icon'
-	-- 		-- style = 'icon' | 'underline' | 'none',
-	-- 		style = "none",
-	-- 	},
-	-- 	show_buffer_close_icons = false,
-	-- 	show_close_icon = false,
-	-- 	enforce_regular_tabs = true,
-	-- 	show_duplicate_prefix = false,
-	-- 	tab_size = 16,
-	-- 	padding = 0,
-	-- 	separator_style = "thick",
-	-- },
+bufferline.setup({})
+
+local trouble = require("trouble")
+trouble.setup({})
+
+local noice = require("noice")
+noice.setup({
+	lsp = {
+		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+		override = {
+			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+			["vim.lsp.util.stylize_markdown"] = true,
+			["cmp.entry.get_documentation"] = true,
+		},
+	},
+	-- you can enable a preset for easier configuration
+	presets = {
+		bottom_search = true, -- use a classic bottom cmdline for search
+		command_palette = true, -- position the cmdline and popupmenu together
+		long_message_to_split = true, -- long messages will be sent to a split
+		inc_rename = false, -- enables an input dialog for inc-rename.nvim
+		lsp_doc_border = false, -- add a border to hover docs and signature help
+	},
 })
 
 --local scrollbar = require("scrollbar")

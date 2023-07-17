@@ -12,13 +12,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	require("plugins.which_key"),
 	require("plugins.lsp"),
-	-- require("plugins.completion"),
 	require("plugins.treeitter"),
 	require("plugins.search"),
 	require("plugins.editor"),
 	require("plugins.vision"),
 	require("plugins.git"),
 	require("plugins.fun"),
+	require("plugins.project"),
 })
 
 

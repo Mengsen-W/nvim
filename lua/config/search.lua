@@ -13,6 +13,8 @@ telescope.setup({
 
 telescope.load_extension("fzf")
 telescope.load_extension("lazygit")
+telescope.load_extension("projects")
+
 
 local hlslens = require("hlslens")
 hlslens.setup({})
