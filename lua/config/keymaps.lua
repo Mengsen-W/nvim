@@ -30,26 +30,24 @@ local normal_mapping = {
 	h = { "<cmd>noh<cr>", "no highlight" },
 	l = {
 		name = "lsp",
-		d = {
+		n = {
 			name = "diagnostic",
 			p = { vim.diagnostic.goto_prev, "goto prev" },
 			n = { vim.diagnostic.goto_next, "goto next" },
 			s = { vim.diagnostic.setloclist, "local list" },
 			e = { vim.diagnostic.open_float, "open float" },
 		},
-		a = {
-			name = "action",
-			d = { vim.lsp.buf.definition, "definition" },
-			D = { vim.lsp.buf.declaration, "declaration" },
-			h = { vim.lsp.buf.hover, "hover" },
-			i = { vim.lsp.buf.implementation, "implemention" },
-			s = { vim.lsp.buf.signature_help, "show signature help" },
-			t = { vim.lsp.buf.type_definition, "type definition" },
-			R = { vim.lsp.buf.rename, "rename" },
-			c = { vim.lsp.buf.code_action, "code action" },
-			r = { vim.lsp.buf.references, "refeerences" },
-			f = { vim.lsp.buf.format, "format" },
-		},
+		t = { "<cmd>TroubleToggle<cr>", "trouble" },
+		d = { vim.lsp.buf.definition, "definition" },
+		D = { vim.lsp.buf.declaration, "declaration" },
+		h = { vim.lsp.buf.hover, "hover" },
+		i = { vim.lsp.buf.implementation, "implemention" },
+		s = { vim.lsp.buf.signature_help, "show signature help" },
+		p = { vim.lsp.buf.type_definition, "type definition" },
+		R = { vim.lsp.buf.rename, "rename" },
+		c = { vim.lsp.buf.code_action, "code action" },
+		r = { vim.lsp.buf.references, "refeerences" },
+		f = { vim.lsp.buf.format, "format" },
 		w = {
 			name = "workspace",
 			a = { vim.lsp.buf.add_workspace_folder, "add workspace" },
@@ -84,7 +82,8 @@ local normal_mapping = {
 		l = { "<cmd>Lazy<cr>", "lazy nvim" },
 		m = { "<cmd>Mason<cr>", "Mason" },
 		n = { "<cmd>NullLsInfo<cr>", "Null Ls Info" },
-	}
+	},
+	R = { "<cmd>so $MYVIMRC<cr>", "reload config" },
 }
 
 local visual_mapping = {
