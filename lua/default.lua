@@ -43,6 +43,7 @@ vim.o.virtualedit = 'block'
 vim.o.ttimeoutlen = 0
 vim.o.timeoutlen = 0
 vim.o.timeout = true
+vim.o.shm  = "I"
 
 
 vim.cmd([[

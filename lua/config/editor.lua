@@ -12,3 +12,6 @@ comment.setup({
 local surround = require("nvim-surround")
 
 surround.setup({})
+
+local auto_pairs = require("nvim-autopairs")
+auto_pairs.setup({})

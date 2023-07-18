@@ -5,6 +5,7 @@ local lsp_config = {
 		{ "williamboman/mason-lspconfig.nvim" },
 		{ "ray-x/lsp_signature.nvim" },
 		{ "nvimdev/lspsaga.nvim" },
+		{ "folke/neodev.nvim" },
 	},
 }
 

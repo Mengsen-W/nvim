@@ -84,10 +84,12 @@ mason_lspconfig.setup({
 })
 
 
-
 local lspconfig = require("lspconfig")
 local lspsaga = require("lspsaga")
 lspsaga.setup({})
+
+local neodev = require("neodev")
+neodev.setup({})
 
 lspconfig.lua_ls.setup({
 	on_attach = function() end,
@@ -124,7 +126,7 @@ null_ls.setup({
 
 		null_ls.builtins.diagnostics.revive,
 		null_ls.builtins.formatting.goimports,
-		null_ls.builtins.code_actions.impl,
+		-- null_ls.builtins.code_actions.impl,
 		-- null_ls.builtins.diagnostics.gospel,
 		-- null_ls.builtins.diagnostics.golangci_lint,
 		null_ls.builtins.formatting.gofmt,
@@ -161,3 +163,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
+
+vim.diagnostic.config({underline = false})
