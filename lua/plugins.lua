@@ -19,7 +19,14 @@ require("lazy").setup({
 	require("plugins.git"),
 	require("plugins.fun"),
 	require("plugins.project"),
+	require("plugins.toggleterm"),
+	require("plugins.neotree"),
 })
 
 
+-- TODO plugins
+-- dap
+-- dap-ui
+-- alphabet
+-- todo-comment
 

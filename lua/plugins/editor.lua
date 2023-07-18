@@ -50,17 +50,22 @@ local flash = {
 	},
 }
 
-
 local surround = {
 	"kylechui/nvim-surround",
 	version = "*", -- Use for stability; omit to use `main` branch for the latest features
 	event = "VeryLazy",
 }
 
+local auto_pairs = {
+	"windwp/nvim-autopairs",
+	event = "InsertEnter",
+}
+
 local editor = {
 	comment,
 	flash,
 	surround,
+	auto_pairs,
 }
 
 return editor
