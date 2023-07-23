@@ -60,6 +60,7 @@ local normal_mapping = {
 		p = { vim.lsp.buf.type_definition, "type definition" },
 		R = { vim.lsp.buf.rename, "rename" },
 		c = { vim.lsp.buf.code_action, "code action" },
+		-- c = { "<cmd>Lspsaga code_action<cr>", "code action" },
 		r = { vim.lsp.buf.references, "refeerences" },
 		f = { vim.lsp.buf.format, "format" },
 		w = {
