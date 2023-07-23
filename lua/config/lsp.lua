@@ -25,7 +25,7 @@ mason.setup({
 	},
 })
 mason_lspconfig.setup({
-	ensure_installed = { "lua_ls" },
+	ensure_installed = { "lua_ls", "clangd", "gopls", "intelephense" },
 	automatic_installation = true,
 })
 
@@ -109,6 +109,15 @@ lspconfig.lua_ls.setup({
 
 lspconfig.gopls.setup({})
 lspconfig.intelephense.setup({})
+lspconfig.rust_analyzer.setup{
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false;
+      }
+    }
+  }
+}
 lspconfig.clangd.setup({
 	cmd = {
 		"clangd",

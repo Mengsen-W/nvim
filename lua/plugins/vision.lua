@@ -8,10 +8,10 @@ local lualine = {
 	"nvim-lualine/lualine.nvim",
 }
 
--- local scrollbar = {
--- 	"petertriho/nvim-scrollbar",
--- }
---
+local scrollbar = {
+	"petertriho/nvim-scrollbar",
+}
+
 local trouble = {
 	"folke/trouble.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -38,7 +38,7 @@ local vision = {
 	lualine,
 	trouble,
 	noice,
-	-- scrollbar
+	scrollbar
 }
 
 return vision

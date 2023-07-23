@@ -66,23 +66,23 @@ noice.setup({
 	},
 })
 
---local scrollbar = require("scrollbar")
---scrollbar.setup({
---	show = true,
---	handle = {
---		text = " ",
---		color = "#928374",
---		hide_if_all_visible = true,
---	},
---	marks = {
---		Search = { color = "yellow" },
---		Misc = { color = "purple" },
---	},
---	handlers = {
---		cursor = false,
---		diagnostic = true,
---		gitsigns = true,
---		handle = true,
---		search = true,
---	},
---})
+local scrollbar = require("scrollbar")
+scrollbar.setup({
+show = true,
+handle = {
+	text = " ",
+	color = "#928374",
+	hide_if_all_visible = true,
+},
+marks = {
+	Search = { color = "yellow" },
+	Misc = { color = "purple" },
+},
+handlers = {
+	cursor = false,
+	diagnostic = true,
+	gitsigns = true,
+	handle = true,
+	search = true,
+},
+})
