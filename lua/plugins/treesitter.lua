@@ -65,8 +65,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     branch = "main",
-    lazy = false,
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     opts = {
       move = {
         enable = true,

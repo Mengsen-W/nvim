@@ -3,8 +3,15 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   build = "cargo build --release",
   dependencies = {
-    { "L3MON4D3/LuaSnip", version = "v2.*" },
-    { "mikavilpas/blink-ripgrep.nvim", version = "*" },
+    {
+      "L3MON4D3/LuaSnip",
+      version = "v2.*",
+      dependencies = { "rafamadriz/friendly-snippets" },
+      config = function ()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end
+    },
+    { "mikavilpas/blink-ripgrep.nvim",    version = "*" },
     { "Kaiser-Yang/blink-cmp-dictionary", dependencies = { "nvim-lua/plenary.nvim" } },
     { "Kaiser-Yang/blink-cmp-git" },
     { "ribru17/blink-cmp-spell" },
@@ -85,10 +92,10 @@ return {
       implementation = "prefer_rust_with_warning",
       sorts = {
         function(a, b)
-            local sort = require("blink.cmp.fuzzy.sort")
-            if a.source_id == "spell" and b.source_id == "spell" then
-              return sort.label(a, b)
-            end
+          local sort = require("blink.cmp.fuzzy.sort")
+          if a.source_id == "spell" and b.source_id == "spell" then
+            return sort.label(a, b)
+          end
         end,
         -- This is the normal default order, which we fall back to
         "score",
